@@ -24,5 +24,4 @@ if __name__ == '__main__':
         print("Processing:", p)
         proj = Optimizer(p, t, pres)
         result = proj.minimize()
-        print(result)
         print("\n" + "=" * 50 + "\n")

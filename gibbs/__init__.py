@@ -73,7 +73,9 @@ def g(t: np.float, species: str):
 
 
 def gibbs_i(xi: np.float, t: np.float, p: np.float, N: np.float, species: str):
-    return xi * (g(t, species) / (R.value * t) + np.log1p(p) + np.log1p(xi / N))
+    # TODO handle when xi = 0 ??
+    xi = np.clip(xi, 0.01, 100)  # this line save my life at 3 am
+    return xi * (g(t, species) / (R.value * t) + np.log1p(p - 1) + np.log1p((xi / N)))
 
 
 def gibbs_system(t: np.float, p: np.float, species: List[Species], N: np.float) -> np.float:

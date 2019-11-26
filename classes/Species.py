@@ -17,7 +17,8 @@ class Species:
         self.__name_map = {e.name: index for index, e in enumerate(elms)}
 
     def __str__(self):
-        return str('' if self.mol == 1 else self.mol) + "".join(str(e) for e in self.elements)
+        mol = round(self.mol, 2)
+        return "(" + str(mol) + ")" + "".join(str(e) for e in self.elements)
 
     def __repr__(self):
         return str(self)

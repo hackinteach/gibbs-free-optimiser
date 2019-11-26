@@ -13,7 +13,7 @@ def parse_nasa_coef(fn: str) -> Dict[str, List[float]]:
     """
     Parse NASA coefficient file
     """
-    nasa = dict()
+    nasa = {}
     curr_name = None
     with open(fn, 'r') as f:
         # skip first 5 lines
@@ -27,6 +27,8 @@ def parse_nasa_coef(fn: str) -> Dict[str, List[float]]:
             else:
                 nasa[curr_name] += find_num_string(line)
     #     print("Species list: ", " ".join(nasa.keys()))
+    for name, coef in nasa.items():  # use lower temperature range
+        nasa[name] = coef[7:]
     return nasa
 
 
